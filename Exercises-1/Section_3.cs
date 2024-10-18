@@ -10,11 +10,13 @@ namespace DangBinhAn_31231021006
     {
         public static void Main()
         {
-            Question1();
+            //Question1();
             //Question2();
+            Question3();
             Console.WriteLine("press any key to escape");
             Console.ReadKey();
         }
+
         /// <summary>
         /// Convert from Celsius to Kelvin and Fahrenheit
         /// </summary>
@@ -29,6 +31,9 @@ namespace DangBinhAn_31231021006
             Console.ReadKey();
 
         }
+        /// <summary>
+        /// Inpur Radius for calculating surface and volume
+        /// </summary>
         public static void Question2()
         {
             Console.Write("Enter Radius: ");
@@ -39,6 +44,9 @@ namespace DangBinhAn_31231021006
             Console.WriteLine("volume = " + volume);
             Console.ReadKey();
         }
+        /// <summary>
+        /// Input a and b for calculating adding, subtracting,  multiplying and dividing 
+        /// </summary>
         public static void Question3()
         {
             Console.Write("Enter a = ");
