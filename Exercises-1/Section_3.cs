@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercises_1
+namespace DangBinhAn_31231021006
 {
     internal class Section_3
     {
