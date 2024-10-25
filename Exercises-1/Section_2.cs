@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+
 namespace DangBinhAn_31231021006
 {
     internal class Section_2
