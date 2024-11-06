@@ -14,12 +14,28 @@ namespace DangBinhAn_31231021006
             //Question2();
             //Question3();
             //Question4_1();
-            Question4_2();
+            //Question4_2();
+            //Question5();
+            Question6();
             Console.WriteLine("press any key to escape");
             Console.ReadKey();
         }
+
         public static void Question1()
         {
+            static int Max(int a, int b, int c)
+            {
+                int max = a;
+                if (b > max)
+                {
+                    max = b;
+                }
+                if (c > max)
+                {
+                    max = c;
+                }
+                return max;
+            }
             Console.Write("Enter x: ");
             int x = int.Parse(Console.ReadLine());
             Console.Write("Enter y: ");
@@ -30,38 +46,37 @@ namespace DangBinhAn_31231021006
             Console.WriteLine("The maximum number is: " + max);
 
         }
-        static int Max(int a, int b, int c)
-        {
-            int max = a;
-            if (b > max)
-            {
-                max = b;
-            }
-            if (c > max)
-            {
-                max = c;
-            }
-            return max;
-        }
+
         public static void Question2()
         {
+            static float calculatingFactorial(int n)
+            {
+                int demSo = 1;
+                for (int i = 1; i <= n; i++)
+                {
+                    demSo *= i;
+                }
+                return demSo;
+            }
             Console.Write("Enter n: ");
             int n = int.Parse(Console.ReadLine());
             float factorial = calculatingFactorial(n);
             Console.WriteLine("the factorial of number {0}: {1}", n, factorial);
 
         }
-        static float calculatingFactorial(int n)
-        {
-            int demSo = 1;
-            for (int i = 1; i <= n; i++)
-            {
-                demSo *= i;
-            }
-            return demSo;
-        }
+
         public static void Question3()
         {
+            static int checkingPrimeNumber(int n)
+            {
+                int demUoc = 0;
+                for (int i = 1; i <= n; i++)
+                {
+                    if (n % i == 0)
+                        demUoc++;
+                }
+                return demUoc;
+            }
             Console.Write("Enter a number: ");
             int n = int.Parse(Console.ReadLine());
             int demUoc = checkingPrimeNumber(n);
@@ -71,18 +86,24 @@ namespace DangBinhAn_31231021006
                 Console.WriteLine($"{n} is not a prime number");
 
         }
-        static int checkingPrimeNumber(int n)
-        {
-            int demUoc = 0;
-            for (int i = 1; i <= n; i++)
-            {
-                if (n % i == 0)
-                    demUoc++;
-            }
-            return demUoc;
-        }
         public static void Question4_1()
         {
+            static int IsPrime(int number)
+            {
+                int value;
+                int demUoc = 0;
+                for (int j = 1; j <= number; j++)
+                {
+                    if (number % j == 0)
+                        demUoc++;
+                }
+                if (demUoc == 2)
+                {
+                    value = 1;
+                }
+                else value = 0;
+                return value;
+            }
             Console.Write("Enter a number: ");
             int n = int.Parse(Console.ReadLine());
             Console.WriteLine($"Prime numbers less than {n}:");
@@ -95,6 +116,7 @@ namespace DangBinhAn_31231021006
             }
             Console.WriteLine();
         }
+
         static int IsPrime(int number)
         {
             int value;
@@ -129,6 +151,50 @@ namespace DangBinhAn_31231021006
             Console.Write("Enter a number: ");
             int N = int.Parse(Console.ReadLine());
             NPrimeNumber(N);
+        }
+
+        static void Question5()
+        {
+            static int checkingPerfectNumber(int n)
+            {
+                int value = 0;
+                int tong = 0;
+                for (int i = 1; i < n; i++)
+                {
+                    if (n % i == 0)
+                    {
+                        tong += i;
+                    }
+                }
+                if (tong == n)
+                    value = 1;
+                else value = 0;
+                return value;
+            }
+            static void printingPerfectNumber()
+            {
+                for (int i = 1; i < 1000; i++)
+                {
+                    if (checkingPerfectNumber(i) == 1)
+                    {
+                        Console.Write(i + " ");
+                    }
+                }
+            }
+            Console.WriteLine("Enter a number: ");
+            int n = int.Parse(Console.ReadLine());
+            int value = checkingPerfectNumber(n);
+            if (value == 1)
+            {
+                Console.WriteLine($"{n} is a perfect number");
+            }
+            else
+                Console.WriteLine($"{n} is not a perfect number");
+            Console.WriteLine("all perfect number that less than 1000: ");
+            printingPerfectNumber();
+            Console.WriteLine();
+            
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace DangBinhAn_31231021006
 {
     internal class Section_4
     {
-        public static void Main()
+        public static void Main5()
         {
             //Question1();
             //Question2();
