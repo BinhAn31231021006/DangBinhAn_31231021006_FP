@@ -8,7 +8,7 @@ namespace DangBinhAn_31231021006
 {
     internal class Section_5
     {
-        public static void Main()
+        public static void Main6()
         {
             //Question1();
             //Question2();
@@ -16,7 +16,7 @@ namespace DangBinhAn_31231021006
             //Question4_1();
             //Question4_2();
             //Question5();
-            Question6();
+            //Question6();
             Console.WriteLine("press any key to escape");
             Console.ReadKey();
         }
@@ -88,22 +88,6 @@ namespace DangBinhAn_31231021006
         }
         public static void Question4_1()
         {
-            static int IsPrime(int number)
-            {
-                int value;
-                int demUoc = 0;
-                for (int j = 1; j <= number; j++)
-                {
-                    if (number % j == 0)
-                        demUoc++;
-                }
-                if (demUoc == 2)
-                {
-                    value = 1;
-                }
-                else value = 0;
-                return value;
-            }
             Console.Write("Enter a number: ");
             int n = int.Parse(Console.ReadLine());
             Console.WriteLine($"Prime numbers less than {n}:");
@@ -181,7 +165,7 @@ namespace DangBinhAn_31231021006
                     }
                 }
             }
-            Console.WriteLine("Enter a number: ");
+            Console.Write("Enter a number: ");
             int n = int.Parse(Console.ReadLine());
             int value = checkingPerfectNumber(n);
             if (value == 1)
@@ -193,8 +177,37 @@ namespace DangBinhAn_31231021006
             Console.WriteLine("all perfect number that less than 1000: ");
             printingPerfectNumber();
             Console.WriteLine();
-            
-
+        }
+      
+        static void Question6()
+        {
+            static bool checkPangram(string str)
+            {
+                bool[] alphabet = new bool[26];
+                int index = 0;
+                for (int i = 0; i < str.Length; i++)
+                {
+                    if ('A' <= str[i] && str[i] <= 'Z')
+                        index = str[i] - 'A';
+                    else if ('a' <= str[i] && str[i] <= 'z')
+                        index = str[i] - 'a';
+                    else
+                        continue;
+                    alphabet[index] = true;
+                }
+                for (int i = 0; i <= 25; i++)
+                {
+                    if (alphabet[i] == false)
+                        return false;
+                }
+                return true;
+            }
+            Console.Write("Enter a sentence: ");
+            string str = Console.ReadLine();
+            if (checkPangram(str) == true)
+                Console.WriteLine("{0} is a pangram", str);
+            else
+                Console.WriteLine("{0} is not a pangram", str);
         }
     }
 }
