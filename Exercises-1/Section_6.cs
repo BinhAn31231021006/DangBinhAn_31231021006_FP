@@ -15,7 +15,9 @@ namespace DangBinhAn_31231021006
         {
             //Question1();
             //Question2();
-            Question3();
+            //Question3();
+            //Question4();
+            Question5();
         }
         static void Question1()
         {
@@ -194,14 +196,150 @@ namespace DangBinhAn_31231021006
             string sentence = Console.ReadLine();
             Console.Write("Enter a word to search for: ");
             string word = Console.ReadLine();
-            if (linearSearch(sentence.Split(' '),word) == -1)
+            if (linearSearch(sentence.Split(' '), word) == -1)
             {
                 Console.WriteLine($"Word {word} was not found");
             }
             else
                 Console.WriteLine($"Word {word} was found in {linearSearch(sentence.Split(' '), word)} index");
         }
+        static void Question4()
+        {
+            int[][] jaggedArray = new int[4][];
+            jaggedArray[0] = new int[5] { 1, 1, 1, 1, 1 };
+            jaggedArray[1] = new int[2] { 2, 2 };
+            jaggedArray[2] = new int[4] { 3, 3, 3, 3 };
+            jaggedArray[3] = new int[2] { 4, 4 };
+            Console.WriteLine("Jagged Array: ");
+            foreach (int[] rows in jaggedArray)
+            {
+                foreach (int value in rows)
+                    Console.Write(value + " ");
+                Console.WriteLine();
+            }
+        }
+        static void Question5()
+        {
+            Console.Write("Enter the rows for jagged array: ");
+            int rows = int.Parse(Console.ReadLine());
+            int[][] jaggedArray = new int[rows][];
+            for (int i = 0; i < rows; i++)
+            {
+                Console.Write("Enter the columns for row {0}: ", i+1);
+                int columns = int.Parse(Console.ReadLine());  
+                jaggedArray[i] = new int[columns];
+            }
+            Console.WriteLine();
+            for (int i = 0; i < jaggedArray.Length; i++)
+            {
+                Console.WriteLine($"Enter values for row {i + 1}:");
+                for (int j = 0; j < jaggedArray[i].Length; j++)
+                {
+                    Console.Write($"Enter value {j + 1}: ");
+                    jaggedArray[i][j] = int.Parse(Console.ReadLine());
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("Jagged Array:");
+            for (int i = 0; i < jaggedArray.Length; i++)
+            {
+                Console.Write($"Row {i + 1}: ");
+                foreach (int value in jaggedArray[i])
+                {
+                    Console.Write(value + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            //largestInRows(jaggedArray);
+            Console.WriteLine();
+            //largestInArray(jaggedArray);
+            Console.WriteLine();
+            //sortEachRow(jaggedArray);
+            Console.WriteLine();
+            //isPrime(jaggedArray);
+            Console.WriteLine();
+            searchPositions(jaggedArray);
+        }
+        static void largestInRows(int[][] jaggedArray)
+        {
+            Console.WriteLine("Largest number in each row: ");
+            for (int i = 0; i < jaggedArray.Length;i++)
+            {
+                int MaxInRows = int.MinValue;
+                foreach (int value in jaggedArray[i])
+                {
+                    if (value > MaxInRows)
+                        MaxInRows = value;
+                }
+                Console.WriteLine($"Max value in Row {i+1}: {MaxInRows}");
+            }    
+        }
+        static void largestInArray(int[][] jaggedArray)
+        {
+            int MaxInArray = int.MinValue;
+            for (int i = 0; i < jaggedArray.Length; i++)
+            {
+                foreach (int value in jaggedArray[i])
+                {
+                    if (value > MaxInArray)
+                        MaxInArray = value;
+                }
+            }
+            Console.WriteLine($"Max value in array: {MaxInArray}");
+        }
+        static void sortEachRow(int[][] jaggedArray)
+        {
+            for (int i = 0; i < jaggedArray.Length; i++)
+            {
+                Array.Sort(jaggedArray[i]);
+                foreach (int value in jaggedArray[i])
+                {
+                    Console.Write(value + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+        static void isPrime(int[][] jaggedArray)
+        {
+            List<int> lst = new List<int>(); 
+            for (int i = 0; i < jaggedArray.Length; i++)
+            {
+                foreach (int value in jaggedArray[i])
+                {
+                    int demUoc = 0;
+                    for (int j = 2; j <= value; j++)
+                    {
+                        if (value % j == 0)
+                            demUoc++;
+                    }
+                    if (demUoc == 1)
+                        lst.Add(value);
+                }
+            }
+            Console.WriteLine("items of the array that are prime: ");
+            foreach (int i  in lst)
+                Console.Write(i + " ");
+        }
+        static void searchPositions(int[][] jaggedArray)
+        {
+            Console.Write("Enter the number to search position in array: ");
+            int SearchValue = int.Parse(Console.ReadLine());
+            bool found = false;
+            for (int i = 0; i < jaggedArray.Length; i++)
+            {
+                for (int j = 0;  j < jaggedArray[i].Length; j++)
+                {
+                    if (jaggedArray[i][j] == SearchValue)
+                    {
+                        Console.WriteLine($"Found at row {i+1}, column {j+1}");
+                        found = true;
+                    }    
+                }    
+            }
+            if (!found)
+                Console.WriteLine("number not found in the array!");
+        }
     }
-    
 
 }
