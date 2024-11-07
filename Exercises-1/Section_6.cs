@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace DangBinhAn_31231021006
 {
@@ -12,7 +13,9 @@ namespace DangBinhAn_31231021006
     {
         public static void Main()
         {
-            Question1();
+            //Question1();
+            //Question2();
+            Question3();
         }
         static void Question1()
         {
@@ -23,10 +26,10 @@ namespace DangBinhAn_31231021006
             int[] array = new int[n];
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = r.Next(0,101);
+                array[i] = r.Next(0, 101);
                 Console.Write(array[i] + " ");
             }
-            
+
             Console.WriteLine();
             double average = calculateAverage(array);
             Console.WriteLine("the average value of array elements: " + average);
@@ -70,7 +73,7 @@ namespace DangBinhAn_31231021006
                 {
                     Console.Write(i + " ");
                 }
-            } 
+            }
             else
                 Console.WriteLine("The duplicate values in an array: 0");
 
@@ -104,7 +107,7 @@ namespace DangBinhAn_31231021006
                 {
                     lst.Add(i);
                 }
-            }    
+            }
             return lst.ToArray();
         }
         static int findMax(int[] array)
@@ -130,14 +133,75 @@ namespace DangBinhAn_31231021006
                     {
                         duplicate.Add(array[i]);
                         break;
-                    }    
-                }    
-            }    
+                    }
+                }
+            }
             return duplicate;
         }
         static int[] removeDuplicateElements(int[] array)
         {
             return array.Distinct().ToArray();
         }
+        static void Question2()
+        {
+            static int[] bubblesort(int[] array)
+            {
+                for (int i = 0; i < array.Length - 1; i++)
+                {
+                    for (int j = 0; j < array.Length - i - 1; j++)
+                    {
+                        if (array[j] > array[j + 1])
+                        {
+                            int temp = array[j];
+                            array[j] = array[j + 1];
+                            array[j + 1] = temp;
+                        }
+                    }
+                }
+                return array;
+            }
+            int[] arrayInt = new int[10];
+            for (int i = 0; i < arrayInt.Length; i++)
+            {
+                Console.Write("Enter the number {0}: ", i + 1);
+                arrayInt[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("array that you have entered: ");
+            foreach (int i in arrayInt)
+                Console.Write(i + " ");
+
+            Console.WriteLine("array after implementing the bubble sort algorithm: ");
+            foreach (int i in bubblesort(arrayInt))
+            {
+                Console.Write(i + " ");
+            }
+        }
+        static void Question3()
+        {
+            static int linearSearch(string[] sentence, string word)
+            {
+                for (int index = 0; index < sentence.Length; index++)
+                {
+                    if (sentence[index] == word)
+                    {
+                        return index;
+                    }
+                }
+                return -1;
+            }
+            Console.Write("Enter a sentence: ");
+            string sentence = Console.ReadLine();
+            Console.Write("Enter a word to search for: ");
+            string word = Console.ReadLine();
+            if (linearSearch(sentence.Split(' '),word) == -1)
+            {
+                Console.WriteLine($"Word {word} was not found");
+            }
+            else
+                Console.WriteLine($"Word {word} was found in {linearSearch(sentence.Split(' '), word)} index");
+        }
     }
+    
+
 }
