@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
@@ -17,7 +17,8 @@ namespace DangBinhAn_31231021006
             //Question2();
             //Question3();
             //Question4();
-            Question5();
+            //Question5();
+            Question6();
         }
         static void Question1()
         {
@@ -339,6 +340,73 @@ namespace DangBinhAn_31231021006
             }
             if (!found)
                 Console.WriteLine("number not found in the array!");
+        }
+        static void Question6()
+        {
+            static void NhapMangBangCom(int[] array)
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    Console.Write($"Enter element number {i + 1}: ");
+                    array[i] = int.Parse(Console.ReadLine());
+                }
+            }
+            static void InMang(int[] array)
+            {
+                Console.WriteLine("Array: ");
+                foreach (int i in array)
+                {
+                    Console.Write(i + " ");
+                }
+            }
+            static void IncreaseArray(int[] array, int val)
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] += val;
+                }
+            }
+            static int SumArray(int[] array)
+            {
+                int sum = 0;
+                foreach (int i in array)
+                {
+                    sum += i;
+                }
+                return sum;
+            }
+            static int MinArray(int[] array)
+            {
+                Array.Sort(array);
+                return array[0];
+            }
+            static int MaxArray(int[] array)
+            {
+                Array.Sort(array);
+                return array[array.Length - 1];
+            }
+            static double AverageArray(int[] array)
+            {
+                return array.Average();
+            }
+            Console.Write("Enter the number of elements for array: ");
+            int n = int.Parse(Console.ReadLine());
+            int[] array = new int[n];
+            NhapMangBangCom(array);
+            InMang(array);
+            IncreaseArray(array, 2);
+            Console.WriteLine();
+            InMang(array);
+            Console.WriteLine();
+            Console.WriteLine("Sum of array: " + SumArray(array));
+            Console.WriteLine("Max of array: " + MaxArray(array));
+            Console.WriteLine("Min of array: " + MinArray(array));
+            Console.WriteLine("Average of array: " + AverageArray(array));
+
+        }
+        static void Question7()
+        {
+            Dictionary<int, string> dict = new Dictionary<int, string>();
         }
     }
 
